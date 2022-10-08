@@ -2,19 +2,42 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  //   const [enteredTitle, setEnteredTitle] = useState("");
+  //   const [enteredAmount, setEnteredAmount] = useState("");
+  //   const [enteredDate, setEnteredDate] = useState("");
+
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
   const titleChangeHandler = (e) => {
-    setEnteredTitle(e.target.value);
+    // setEnteredTitle(e.target.value);
+
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: e.target.value,
+    // });
+    //바로 실행하지 않기 때문에 밑의 방식을 사용해야 한다
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: e.target.value };
+    });
+    //가장 최신의 state 값을 가지고 있는 것을 보장하기에 위의 방법보다 더 안전한 방법
   };
 
   const amountChangeHandler = (e) => {
-    setEnteredAmount(e.target.value);
+    setUserInput({
+      ...userInput,
+      enteredAmount: e.target.value,
+    });
   };
 
   const dateChangeHandler = (e) => {
-    setEnteredDate(e.target.value);
+    setUserInput({
+      ...userInput,
+      enteredDate: e.target.value,
+    });
   };
   return (
     <form>
