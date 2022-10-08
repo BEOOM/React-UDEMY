@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  //   const [enteredTitle, setEnteredTitle] = useState("");
-  //   const [enteredAmount, setEnteredAmount] = useState("");
-  //   const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
-  const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
+  //   const [userInput, setUserInput] = useState({
+  //     enteredTitle: "",
+  //     enteredAmount: "",
+  //     enteredDate: "",
+  //   });
   const titleChangeHandler = (e) => {
-    // setEnteredTitle(e.target.value);
+    setEnteredTitle(e.target.value);
 
     // setUserInput({
     //   ...userInput,
@@ -20,31 +20,51 @@ const ExpenseForm = () => {
     // });
     //바로 실행하지 않기 때문에 밑의 방식을 사용해야 한다
 
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: e.target.value };
-    });
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: e.target.value };
+    // });
     //가장 최신의 state 값을 가지고 있는 것을 보장하기에 위의 방법보다 더 안전한 방법
   };
 
   const amountChangeHandler = (e) => {
-    setUserInput({
-      ...userInput,
-      enteredAmount: e.target.value,
-    });
+    setEnteredAmount(e.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: e.target.value,
+    // });
   };
 
   const dateChangeHandler = (e) => {
-    setUserInput({
-      ...userInput,
-      enteredDate: e.target.value,
-    });
+    setEnteredDate(e.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: e.target.value,
+    // });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -53,6 +73,7 @@ const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -62,6 +83,7 @@ const ExpenseForm = () => {
             min="2019-01-01"
             max="2022-12-31"
             onChange={dateChangeHandler}
+            value={enteredDate}
           />
         </div>
       </div>
