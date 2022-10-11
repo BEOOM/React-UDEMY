@@ -52,7 +52,7 @@ function App() {
         amount={expenses[3].amount}
         date={expenses[3].date}
       /> */}
-      <Expenses expenses={expenses} />
+      <Expenses items={expenses} />
     </div>
   );
 }
