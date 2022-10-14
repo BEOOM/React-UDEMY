@@ -4,13 +4,15 @@ import "./Chart.css";
 import { data } from "autoprefixer";
 
 const Chart = (props) => {
+  const dataPointValues = props.dataPoints.map((dataPoint) => dataPoint.value);
+  const totalMaximum = Math.max(...dataPointValues);
   return (
     <div className="chart">
       {props.dataPoints.map((dataPoint) => (
         <ChartBar
           key={dataPoint.id}
           value={dataPoint.value}
-          maxValue={null}
+          maxValue={totalMaximum}
           label={dataPoint.label}
         />
       ))}
