@@ -1,6 +1,7 @@
 import React from "react";
 import P1Card from "../UI/P1Card";
 import classes from "./AddUser.module.css";
+import P1Button from "../UI/P1Button";
 
 const AddUser = (props) => {
   const addUserHandler = (e) => {
@@ -13,7 +14,7 @@ const AddUser = (props) => {
         <input type="text" id="username" />
         <label htmlFor="age">Age</label>
         <input type="number" id="age" />
-        <button type="submit">Add User</button>
+        <P1Button type="submit">Add User</P1Button>
       </form>
     </P1Card>
   );
