@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import AuthContext from "./components/10/store/auth-context";
 import Home from "./components/10/Home/Home";
 import Login from "./components/10/Login/Login";
 import MainHeader from "./components/10/MainHeader/MainHeader";
@@ -28,13 +28,17 @@ function Section10() {
   };
 
   return (
-    <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+      }}
+    >
+      <MainHeader onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </React.Fragment>
+    </AuthContext.Provider>
   );
 }
 
