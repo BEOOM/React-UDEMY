@@ -4,8 +4,10 @@ import "./Section14.css";
 
 function Section14() {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchMoviesHandler() {
+    setIsLoading(true);
     const response = await fetch("https://swapi.py4e.com/api/films/");
     const data = await response.json();
 
@@ -18,6 +20,7 @@ function Section14() {
       };
     });
     setMovies(transformedMovies);
+    setIsLoading(false);
   }
 
   const dummyMovies = [
@@ -41,7 +44,9 @@ function Section14() {
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={movies} />
+        {!isLoading && movies.lnegth > 0 && <MoviesList movies={movies} />}
+        {!isLoading && movies.length === 0 && <p>Found NO Movie</p>}
+        {isLoading && <p>Loading...</p>}
       </section>
     </React.Fragment>
   );
