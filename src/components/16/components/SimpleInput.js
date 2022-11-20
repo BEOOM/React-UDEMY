@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== "";
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const nameInputChangeHandler = (e) => {
     setEnteredName(e.target.value);
@@ -13,10 +14,6 @@ const SimpleInput = (props) => {
 
   const nameInputBlurHandler = (e) => {
     setEnteredNameTouched(true);
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
-      return;
-    }
   };
 
   const formSubmissionHandler = (e) => {
@@ -24,22 +21,16 @@ const SimpleInput = (props) => {
 
     setEnteredNameTouched(true);
 
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid) {
       return;
     }
-
-    setEnteredNameIsValid(true);
-
     console.log(enteredName);
-    const enteredValue = nameInputRef.current.value;
+    // const enteredValue = nameInputRef.current.value; <- ref 필요없음
     //값이 한번만 필요하다면 ref 사용
-    console.log(enteredValue);
-    // nameInputRef.current.value = "" <- DOM에 직접 접근 이상적이지 않음!!
+    // nameInputRef.current.value = ""ƒ <- DOM에 직접 접근 이상적이지 않음!!
     setEnteredName("");
+    setEnteredNameTouched(false);
   };
-
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const nameInputClasses = nameInputIsInvalid
     ? "form-control invalid"
@@ -50,7 +41,6 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
-          ref={nameInputRef}
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
