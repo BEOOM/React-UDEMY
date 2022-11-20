@@ -11,6 +11,14 @@ const SimpleInput = (props) => {
     //키 입력마다 유효성 검사가 필요하다면 state 사용이 나음
   };
 
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched(true);
+    if (enteredName.trim() === "") {
+      setEnteredNameIsValid(false);
+      return;
+    }
+  };
+
   const formSubmissionHandler = (e) => {
     e.preventDefault();
 
@@ -46,6 +54,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
           value={enteredName}
         />
         {nameInputIsInvalid && (
