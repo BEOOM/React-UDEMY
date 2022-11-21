@@ -1,9 +1,10 @@
 import SimpleInput from "./components/SimpleInput";
+import BasicForm from "./components/BasicForm";
 
 function Section16() {
   return (
     <div className="app">
-      <SimpleInput />
+      <BasicForm />
     </div>
   );
 }
