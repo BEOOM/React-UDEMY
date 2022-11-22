@@ -62,7 +62,7 @@ const Checkout = (props) => {
     formInputValidity.name ? "" : classes.invalid
   }`;
   const strretControlClasses = `${classes.contrl} ${
-    formInputValidity.strret ? "" : classes.invalid
+    formInputValidity.street ? "" : classes.invalid
   }`;
   const postalCodeControlClasses = `${classes.contrl} ${
     formInputValidity.postalCode ? "" : classes.invalid
