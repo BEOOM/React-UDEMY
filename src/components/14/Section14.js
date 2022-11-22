@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MovieList from "./components/MoviesList";
 import AddMovie from "./components/AddMovie";
-import "./Section14.css";
+// import "./Section14.css";
 
 function Section14() {
   const [movies, setMovies] = useState([]);
