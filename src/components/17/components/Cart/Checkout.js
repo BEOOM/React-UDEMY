@@ -16,8 +16,8 @@ const Checkout = (props) => {
   });
   const nameInputRef = useRef();
   const streetInputRef = useRef();
-  const postalInputRef = useRef();
   const cityInputRef = useRef();
+  const postalInputRef = useRef();
 
   const confirmHandler = (event) => {
     event.preventDefault();
@@ -45,6 +45,17 @@ const Checkout = (props) => {
       enteredStreetIsValid &&
       enteredCityIsValid &&
       enteredPostalCodeIsvalid;
+
+    if (!formIsValid) {
+      return;
+    }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   const nameControlClasses = `${classes.contrl} ${
