@@ -14,6 +14,12 @@ import Section152 from "./components/15-2/Section152";
 import Section16 from "./components/16/Section16";
 import Section17 from "./components/17/Section17";
 import Section18 from "./components/18/Section18";
+import { Provider } from "react-redux";
+import store from "./components/18/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Section18 />);
+root.render(
+  <Provider store={store}>
+    <Section18 />
+  </Provider>
+);
