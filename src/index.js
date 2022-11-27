@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index17.css";
+import "./index18.css";
 import App from "./App";
 import App2 from "./App2";
 import Practice1 from "./Practice1";
@@ -13,6 +13,7 @@ import Section15 from "./components/15-1/Section15";
 import Section152 from "./components/15-2/Section152";
 import Section16 from "./components/16/Section16";
 import Section17 from "./components/17/Section17";
+import Section18 from "./components/18/Section18";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Section17 />);
+root.render(<Section18 />);
