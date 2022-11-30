@@ -2,6 +2,7 @@ import { Component } from "react";
 import { useSelector, useDispatch, connect } from "react-redux";
 
 import classes from "./Counter.module.css";
+import { counterActions } from "../store/index";
 
 const Counter = () => {
   const dispatch = useDispatch();
@@ -9,19 +10,22 @@ const Counter = () => {
   const show = useSelector((state) => state.showCounter);
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
+    //메서드로 실행 -> 실행되면 액션 객체를 만든다
   };
 
   const increaseHandler = () => {
-    dispatch({ type: "increase", amount: 5 });
+    dispatch(counterActions.increase(10));
+    //어떻게 추출할것인가
+    //{type: unique_identifier, payload: 10}
   };
 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
