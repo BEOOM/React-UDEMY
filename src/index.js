@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import "./index18.css";
+import "./index19.css";
 import App from "./App";
 import App2 from "./App2";
 import Practice1 from "./Practice1";
@@ -15,11 +15,12 @@ import Section152 from "./components/15-2/Section152";
 import Section16 from "./components/16/Section16";
 import Section17 from "./components/17/Section17";
 import Section18 from "./components/18/Section18";
-import store from "./components/18/store";
+import store from "./components/19/store";
+import Section19 from "./components/19/Section19";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <Section18 />
+    <Section19 />
   </Provider>
 );
