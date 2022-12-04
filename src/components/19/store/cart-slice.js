@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./ui-slice";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -29,7 +30,7 @@ const cartSlice = createSlice({
       }
     },
     removeItemFromCart(state, action) {
-        //action -> 추가 정보 필요한 payload 얻을 수 있기 때문
+      //action -> 추가 정보 필요한 payload 얻을 수 있기 때문
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
       state.totalQuantity--;
@@ -44,6 +45,52 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const sendCartData = (cart) => {
+  return async (dispatch) => {
+    dispatch(
+      uiActions.showNotification({
+        status: "pending",
+        title: "sending",
+        message: "sending cart data!",
+      })
+    );
+
+    const sendRequest = async () => {
+      const response = await fetch(
+        "https://react-http-92230-default-rtdb.firebaseio.com/cart.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("sending cart data failed");
+      }
+    };
+
+    try {
+      await sendRequest();
+
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "success",
+          message: "sent cart data successfully!",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "error",
+          message: "sending cart data failed",
+        })
+      );
+    }
+  };
+};
 
 export const cartActions = cartSlice.actions;
 //to dispatch actions
