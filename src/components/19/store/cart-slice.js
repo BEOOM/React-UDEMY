@@ -18,6 +18,7 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       state.totalQuantity++;
+      state.changed = true;
       //존재하는 상품이 없으면
       if (!existingItem) {
         state.items.push({
@@ -38,6 +39,7 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
       state.totalQuantity--;
+      state.changed = true;
       if (existingItem.quantity === 1) {
         //배열에서 완전히 제거해야한다
         state.items = state.items.filter((item) => item.id !== id);

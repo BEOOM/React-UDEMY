@@ -25,7 +25,10 @@ function Section19() {
       isInitial = false;
       return;
     }
-    dispatch(sendCartData(cart));
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+      //바뀌었을때만 정보 보내기
+    }
   }, [cart, dispatch]);
 
   return (
