@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import "./index20.css";
+import "./index21.css";
 import App from "./App";
 import App2 from "./App2";
 import Practice1 from "./Practice1";
@@ -19,10 +19,11 @@ import store from "./components/19/store";
 import Section19 from "./components/19/Section19";
 import Section20 from "./components/20/Section20";
 import { BrowserRouter } from "react-router-dom";
+import Section21 from "./components/21/Section21";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Section20 />
+    <Section21 />
   </BrowserRouter>
 );
