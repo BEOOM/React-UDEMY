@@ -6,7 +6,6 @@ import App from "./App";
 import App2 from "./App2";
 import Practice1 from "./Practice1";
 import Section10 from "./Section10";
-import { AuthContextProvider } from "./components/10/store/auth-context";
 import Section11 from "./components/11/Section11";
 import Section13 from "./components/13/Section13";
 import Section14 from "./components/14/Section14";
@@ -20,10 +19,13 @@ import Section19 from "./components/19/Section19";
 import Section20 from "./components/20/Section20";
 import { BrowserRouter } from "react-router-dom";
 import Section21 from "./components/21/Section21";
+import { AuthContextProvider } from "./components/21/store/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Section21 />
-  </BrowserRouter>
+  <AuthContextProvider>
+    <BrowserRouter>
+      <Section21 />
+    </BrowserRouter>
+  </AuthContextProvider>
 );

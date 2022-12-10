@@ -5,6 +5,7 @@ import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 
+
 function Section21() {
   return (
     <Layout>
