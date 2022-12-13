@@ -57,8 +57,11 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
-        history.replace('/')
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        );
+        authCtx.login(data.idToken, expirationTime);
+        history.replace("/");
         //이전 페이지로 갈 수 없음
       })
       .catch((err) => {
