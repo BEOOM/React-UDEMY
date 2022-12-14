@@ -20,7 +20,6 @@ import Section20 from "./components/20/Section20";
 import { BrowserRouter } from "react-router-dom";
 import Section21 from "./components/21/Section21";
 import { AuthContextProvider } from "./components/21/store/auth-context";
-import Section25 from "./components/25/App";
 import Section28 from "./components/28/Section28";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
