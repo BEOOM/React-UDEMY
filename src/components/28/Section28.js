@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from "react";
+import Auth from "./components/Auth";
+import Ingredients from "./components/Ingredients/Ingredients";
+import { AuthContext } from "./context/auth-context";
 
-import Ingredients from './components/Ingredients/Ingredients';
+const Section28 = (props) => {
+  const authContext = useContext(AuthContext);
 
-const Section28 = props => {
-  return <Ingredients />;
+  let content = <Auth />;
+  if (authContext.isAuth) {
+    content = <Ingredients />;
+  }
+  return content;
 };
 
 export default Section28;
