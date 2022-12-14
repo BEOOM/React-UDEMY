@@ -9,7 +9,7 @@ const Search = React.memo((props) => {
   const inputRef = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (enteredFilter === inputRef.current.value) {
         const query =
           enteredFilter.length === 0
@@ -33,6 +33,10 @@ const Search = React.memo((props) => {
           });
       }
     }, 500);
+    return () => {
+      clearTimeout(timer);
+      //다음 이펙트 실행 전에 동작 -> 새로운 타이머가 설정되기 직전 지워진다
+    };
   }, [enteredFilter, onLoadIngredients, inputRef]);
 
   return (
