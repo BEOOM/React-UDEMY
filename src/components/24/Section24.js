@@ -21,8 +21,12 @@ class Section24 extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
-        <Backdrop show={this.state.modalIsOpen} />
+        {this.state.modalIsOpen ? (
+          <Modal show={this.state.modalIsOpen} />
+        ) : null}
+        {this.state.modalIsOpen ? (
+          <Backdrop show={this.state.modalIsOpen} />
+        ) : null}
         <button className="Button" onClick={this.showModal}>
           Open Modal
         </button>
@@ -32,5 +36,6 @@ class Section24 extends Component {
     );
   }
 }
+// 재랜더링되는 시간을 기다려주지 않음 -> 모달창이 애니메이션 없이 바로 없어짐
 
 export default Section24;
