@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import "./index28.css";
+import "./index24.css";
 import App from "./App";
 import App2 from "./App2";
 import Practice1 from "./Practice1";
@@ -20,11 +20,8 @@ import Section20 from "./components/20/Section20";
 import { BrowserRouter } from "react-router-dom";
 import Section21 from "./components/21/Section21";
 import Section28 from "./components/28/Section28";
+import Section24 from "./components/24/Section24";
 import AuthContextProvider from "./components/28/context/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <AuthContextProvider>
-    <Section28 />
-  </AuthContextProvider>
-);
+root.render(<Section24 />);
