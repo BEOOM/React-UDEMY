@@ -36,6 +36,12 @@ class Section24 extends Component {
           timeout={1000}
           mountOnEnter
           unmountOnExit
+          onEnter={() => console.log("onenter")}
+          onEntering={() => console.log("onentering")}
+          onEntered={() => console.log("onentered")}
+          onExit={() => console.log("onexit")}
+          onExiting={() => console.log("onexiting")}
+          onExited={() => console.log("onexited")}
         >
           {(state) => (
             <div
